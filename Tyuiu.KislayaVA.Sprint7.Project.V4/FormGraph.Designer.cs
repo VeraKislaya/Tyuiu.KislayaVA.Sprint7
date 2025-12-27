@@ -31,54 +31,70 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            label1 = new Label();
-            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
+            labelStatis_KVA = new Label();
+            chartStats_KVA = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            buttonCloseStats_KVA = new Button();
+            ((System.ComponentModel.ISupportInitialize)chartStats_KVA).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // labelStatis_KVA
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(529, 59);
-            label1.Name = "label1";
-            label1.Size = new Size(50, 20);
-            label1.TabIndex = 2;
-            label1.Text = "label1";
+            labelStatis_KVA.AutoSize = true;
+            labelStatis_KVA.Location = new Point(35, 42);
+            labelStatis_KVA.Name = "labelStatis_KVA";
+            labelStatis_KVA.Size = new Size(15, 20);
+            labelStatis_KVA.TabIndex = 2;
+            labelStatis_KVA.Text = "-";
             // 
-            // chart1
+            // chartStats_KVA
             // 
+            chartStats_KVA.BackColor = SystemColors.AppWorkspace;
             chartArea1.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea1);
+            chartStats_KVA.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            chart1.Legends.Add(legend1);
-            chart1.Location = new Point(369, 253);
-            chart1.Name = "chart1";
+            chartStats_KVA.Legends.Add(legend1);
+            chartStats_KVA.Location = new Point(510, 106);
+            chartStats_KVA.Name = "chartStats_KVA";
+            chartStats_KVA.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Grayscale;
             series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
-            chart1.Series.Add(series1);
-            chart1.Size = new Size(375, 375);
-            chart1.TabIndex = 3;
-            chart1.Text = "chart1";
+            chartStats_KVA.Series.Add(series1);
+            chartStats_KVA.Size = new Size(564, 549);
+            chartStats_KVA.TabIndex = 3;
+            chartStats_KVA.Text = "chart1";
+            // 
+            // buttonCloseStats_KVA
+            // 
+            buttonCloseStats_KVA.Location = new Point(967, 20);
+            buttonCloseStats_KVA.Name = "buttonCloseStats_KVA";
+            buttonCloseStats_KVA.Size = new Size(107, 64);
+            buttonCloseStats_KVA.TabIndex = 4;
+            buttonCloseStats_KVA.Text = "Закрыть";
+            buttonCloseStats_KVA.UseVisualStyleBackColor = true;
+            buttonCloseStats_KVA.Click += buttonCloseStats_KVA_Click;
             // 
             // FormGraph
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1129, 667);
-            Controls.Add(chart1);
-            Controls.Add(label1);
+            BackColor = SystemColors.AppWorkspace;
+            ClientSize = new Size(1086, 667);
+            Controls.Add(buttonCloseStats_KVA);
+            Controls.Add(chartStats_KVA);
+            Controls.Add(labelStatis_KVA);
+            MaximizeBox = false;
             Name = "FormGraph";
-            Text = "FormGraph";
+            Text = "Статистика";
             Load += FormGraph_Load;
-            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chartStats_KVA).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Label label1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private Label labelStatis_KVA;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartStats_KVA;
+        private Button buttonCloseStats_KVA;
     }
 }

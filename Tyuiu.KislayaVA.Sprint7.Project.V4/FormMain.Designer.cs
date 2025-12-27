@@ -33,25 +33,24 @@
             toolStripOpenFile_KVA = new ToolStripMenuItem();
             toolStripSaveFile_KVA = new ToolStripMenuItem();
             toolStripStatistic_KVA = new ToolStripDropDownButton();
-            ToolStripData_KVA = new ToolStripMenuItem();
             ToolStripMenuFunc_KVA = new ToolStripMenuItem();
             toolStripSpravka_KVA = new ToolStripDropDownButton();
             ToolStripAbout_KVA = new ToolStripMenuItem();
             ToolStripGuide_KVA = new ToolStripMenuItem();
             tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
+            tabPageBooks_KVA = new TabPage();
+            textBoxSearch_KVA = new TextBox();
             comboBoxFiltr_KVA = new ComboBox();
             dataGridView1 = new DataGridView();
-            tabPage2 = new TabPage();
-            dataGridView2 = new DataGridView();
-            textBoxSearch_KVA = new TextBox();
-            comboBox2 = new ComboBox();
+            tabPageReaders_KVA = new TabPage();
             textBox2 = new TextBox();
+            comboBox2 = new ComboBox();
+            dataGridView2 = new DataGridView();
             toolStrip1.SuspendLayout();
             tabControl1.SuspendLayout();
-            tabPage1.SuspendLayout();
+            tabPageBooks_KVA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            tabPage2.SuspendLayout();
+            tabPageReaders_KVA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
@@ -91,24 +90,17 @@
             // toolStripStatistic_KVA
             // 
             toolStripStatistic_KVA.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripStatistic_KVA.DropDownItems.AddRange(new ToolStripItem[] { ToolStripData_KVA, ToolStripMenuFunc_KVA });
+            toolStripStatistic_KVA.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuFunc_KVA });
             toolStripStatistic_KVA.ImageTransparentColor = Color.Magenta;
             toolStripStatistic_KVA.Name = "toolStripStatistic_KVA";
             toolStripStatistic_KVA.Size = new Size(98, 24);
             toolStripStatistic_KVA.Text = "Статистика";
             // 
-            // ToolStripData_KVA
-            // 
-            ToolStripData_KVA.Name = "ToolStripData_KVA";
-            ToolStripData_KVA.Size = new Size(151, 26);
-            ToolStripData_KVA.Text = "Данные";
-            ToolStripData_KVA.Click += ToolStripData_KVA_CLick;
-            // 
             // ToolStripMenuFunc_KVA
             // 
             ToolStripMenuFunc_KVA.Name = "ToolStripMenuFunc_KVA";
-            ToolStripMenuFunc_KVA.Size = new Size(151, 26);
-            ToolStripMenuFunc_KVA.Text = "Графики";
+            ToolStripMenuFunc_KVA.Size = new Size(131, 26);
+            ToolStripMenuFunc_KVA.Text = "Цены";
             ToolStripMenuFunc_KVA.Click += ToolStripMenuFunc_KVA_CLick;
             // 
             // toolStripSpravka_KVA
@@ -136,29 +128,38 @@
             // 
             // tabControl1
             // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPageBooks_KVA);
+            tabControl1.Controls.Add(tabPageReaders_KVA);
             tabControl1.Location = new Point(12, 68);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(1409, 592);
             tabControl1.TabIndex = 1;
             // 
-            // tabPage1
+            // tabPageBooks_KVA
             // 
-            tabPage1.Controls.Add(textBoxSearch_KVA);
-            tabPage1.Controls.Add(comboBoxFiltr_KVA);
-            tabPage1.Controls.Add(dataGridView1);
-            tabPage1.Location = new Point(4, 29);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1401, 559);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "tabPage1";
-            tabPage1.UseVisualStyleBackColor = true;
+            tabPageBooks_KVA.Controls.Add(textBoxSearch_KVA);
+            tabPageBooks_KVA.Controls.Add(comboBoxFiltr_KVA);
+            tabPageBooks_KVA.Controls.Add(dataGridView1);
+            tabPageBooks_KVA.Location = new Point(4, 29);
+            tabPageBooks_KVA.Name = "tabPageBooks_KVA";
+            tabPageBooks_KVA.Padding = new Padding(3);
+            tabPageBooks_KVA.Size = new Size(1401, 559);
+            tabPageBooks_KVA.TabIndex = 0;
+            tabPageBooks_KVA.Text = "Книги";
+            tabPageBooks_KVA.UseVisualStyleBackColor = true;
+            // 
+            // textBoxSearch_KVA
+            // 
+            textBoxSearch_KVA.BackColor = SystemColors.AppWorkspace;
+            textBoxSearch_KVA.Location = new Point(163, 7);
+            textBoxSearch_KVA.Name = "textBoxSearch_KVA";
+            textBoxSearch_KVA.Size = new Size(125, 27);
+            textBoxSearch_KVA.TabIndex = 2;
             // 
             // comboBoxFiltr_KVA
             // 
+            comboBoxFiltr_KVA.BackColor = SystemColors.AppWorkspace;
             comboBoxFiltr_KVA.FormattingEnabled = true;
             comboBoxFiltr_KVA.Items.AddRange(new object[] { "1", "2", "3" });
             comboBoxFiltr_KVA.Location = new Point(6, 6);
@@ -168,6 +169,7 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.BackgroundColor = SystemColors.ControlDarkDark;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(6, 57);
             dataGridView1.Name = "dataGridView1";
@@ -176,37 +178,30 @@
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // tabPage2
+            // tabPageReaders_KVA
             // 
-            tabPage2.Controls.Add(textBox2);
-            tabPage2.Controls.Add(comboBox2);
-            tabPage2.Controls.Add(dataGridView2);
-            tabPage2.Location = new Point(4, 29);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1401, 559);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
-            tabPage2.UseVisualStyleBackColor = true;
+            tabPageReaders_KVA.Controls.Add(textBox2);
+            tabPageReaders_KVA.Controls.Add(comboBox2);
+            tabPageReaders_KVA.Controls.Add(dataGridView2);
+            tabPageReaders_KVA.Location = new Point(4, 29);
+            tabPageReaders_KVA.Name = "tabPageReaders_KVA";
+            tabPageReaders_KVA.Padding = new Padding(3);
+            tabPageReaders_KVA.Size = new Size(1401, 559);
+            tabPageReaders_KVA.TabIndex = 1;
+            tabPageReaders_KVA.Text = "Читатели";
+            tabPageReaders_KVA.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // textBox2
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(6, 57);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.Size = new Size(1389, 496);
-            dataGridView2.TabIndex = 1;
-            // 
-            // textBoxSearch_KVA
-            // 
-            textBoxSearch_KVA.Location = new Point(163, 7);
-            textBoxSearch_KVA.Name = "textBoxSearch_KVA";
-            textBoxSearch_KVA.Size = new Size(125, 27);
-            textBoxSearch_KVA.TabIndex = 2;
+            textBox2.BackColor = SystemColors.AppWorkspace;
+            textBox2.Location = new Point(163, 7);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(125, 27);
+            textBox2.TabIndex = 3;
             // 
             // comboBox2
             // 
+            comboBox2.BackColor = SystemColors.AppWorkspace;
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "1", "2", "3" });
             comboBox2.Location = new Point(6, 6);
@@ -214,21 +209,26 @@
             comboBox2.Size = new Size(151, 28);
             comboBox2.TabIndex = 2;
             // 
-            // textBox2
+            // dataGridView2
             // 
-            textBox2.Location = new Point(163, 7);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(125, 27);
-            textBox2.TabIndex = 3;
+            dataGridView2.BackgroundColor = SystemColors.ControlDarkDark;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(6, 57);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowHeadersWidth = 51;
+            dataGridView2.Size = new Size(1389, 496);
+            dataGridView2.TabIndex = 1;
             // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
+            BackColor = SystemColors.AppWorkspace;
             ClientSize = new Size(1433, 672);
             Controls.Add(tabControl1);
             Controls.Add(toolStrip1);
+            MaximizeBox = false;
             Name = "FormMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Спринт 7 Проект В4 Кислая В.А. РППб25-1";
@@ -236,11 +236,11 @@
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             tabControl1.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
-            tabPage1.PerformLayout();
+            tabPageBooks_KVA.ResumeLayout(false);
+            tabPageBooks_KVA.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
+            tabPageReaders_KVA.ResumeLayout(false);
+            tabPageReaders_KVA.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -253,15 +253,14 @@
         private ToolStripMenuItem toolStripOpenFile_KVA;
         private ToolStripMenuItem toolStripSaveFile_KVA;
         private ToolStripDropDownButton toolStripStatistic_KVA;
-        private ToolStripMenuItem ToolStripData_KVA;
         private ToolStripMenuItem ToolStripMenuFunc_KVA;
         private ToolStripDropDownButton toolStripSpravka_KVA;
         private ToolStripMenuItem ToolStripAbout_KVA;
         private ToolStripMenuItem ToolStripGuide_KVA;
         private TabControl tabControl1;
-        private TabPage tabPage1;
+        private TabPage tabPageBooks_KVA;
         private DataGridView dataGridView1;
-        private TabPage tabPage2;
+        private TabPage tabPageReaders_KVA;
         private DataGridView dataGridView2;
         private ComboBox comboBoxFiltr_KVA;
         private TextBox textBoxSearch_KVA;

@@ -11,6 +11,9 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
 {
     public partial class FormMain : Form
     {
+        
+        // Ссылаемся на файлы для открытия их по умолчанию, создаем переменные для хранения и для фильтрации
+        
         private string booksFilePath = "books.csv";
         private string readersFilePath = "readers.csv";
 
@@ -25,11 +28,15 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
             InitializeComponent();
         }
 
+        // Получение данных о книгах
+        
         public DataTable GetBooksData()
         {
             return booksDataTableFull;
         }
 
+        // Инициализация фильтров
+        
         private void InitializeFilterComboBox()
         {
             comboBoxFiltr_KVA.Items.Clear();
@@ -86,6 +93,8 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
             dataGridView2.DataSource = filteredTable;
         }
 
+        // ПОиск
+
         private void SearchReadersData()
         {
             string searchText = textBox2.Text.Trim();
@@ -114,6 +123,8 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
             dataGridView2.DataSource = searchTable;
         }
 
+        // Загрзука формы
+        
         private void Form1_Load(object sender, EventArgs e)
         {
             InitializeBooksTable();
@@ -129,9 +140,11 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
             textBoxSearch_KVA.TextChanged += (s, ev) => SearchDataByTextBox();
             comboBox2.SelectedIndexChanged += (s, ev) => FilterReadersData(); // Для читателей
             textBox2.TextChanged += (s, ev) => SearchReadersData(); // Для читателей
+
         }
 
-
+       
+        // Инициализация таблички с книгами
         private void InitializeBooksTable()
         {
             booksDataTable = new DataTable();
@@ -145,6 +158,7 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
             dataGridView1.DataSource = booksDataTable;
         }
 
+        // с читателями
         private void InitializeReadersTable()
         {
             readersDataTable = new DataTable();
@@ -158,6 +172,7 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
             dataGridView2.DataSource = readersDataTable;
         }
 
+        // загрузка из файлов
         private void LoadDataFromFiles()
         {
             try
@@ -274,12 +289,14 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
             readersDataTableFull = readersDataTable.Copy();
         }
 
+        // Образец данных (они вызываются если что то поломалось)
+
         private void CreateSampleData()
         {
-            booksDataTable.Rows.Add("Толстой Л.Н.", "Война и мир", 1869, 850.00m, false, "Роман-эпопея о войне 1812 года");
-            booksDataTable.Rows.Add("Достоевский Ф.М.", "Преступление и наказание", 1866, 650.00m, false, "Психологический роман о преступлении и совести");
-            booksDataTable.Rows.Add("Пушкин А.С.", "Евгений Онегин", 1833, 450.00m, false, "Роман в стихах о любви");
-            booksDataTable.Rows.Add("Булгаков М.А.", "Мастер и Маргарита", 1967, 750.00m, true, "Мистический роман о добре и зле");
+            booksDataTable.Rows.Add("Толстой Л.Н.", "Война и мир", 1869, 450, false, "Роман-эпопея о войне 1812 года");
+            booksDataTable.Rows.Add("Достоевский Ф.М.", "Преступление и наказание", 1866, 650, false, "Психологический роман о преступлении и совести");
+            booksDataTable.Rows.Add("Пушкин А.С.", "Евгений Онегин", 1833, 450, false, "Роман в стихах о любви");
+            booksDataTable.Rows.Add("Булгаков М.А.", "Мастер и Маргарита", 1967, 550, true, "Мистический роман о добре и зле");
 
             booksDataTableFull = booksDataTable.Copy();
 
@@ -291,6 +308,7 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
             readersDataTableFull = readersDataTable.Copy();
         }
 
+        // Сохранение данных
         private void SaveDataToFiles()
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
@@ -303,7 +321,7 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
                 {
                     try
                     {
-                        if (tabControl1.SelectedTab == tabPage1) // Книги
+                        if (tabControl1.SelectedTab == tabPageBooks_KVA) // Книги
                         {
                             SaveBooksToCSV(saveFileDialog.FileName);
                         }
@@ -356,6 +374,7 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
             File.WriteAllText(filePath, sb.ToString(), Encoding.UTF8);
         }
 
+
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -367,12 +386,12 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
                 {
                     try
                     {
-                        if (tabControl1.SelectedTab == tabPage1) // Книги
+                        if (tabControl1.SelectedTab == tabPageBooks_KVA) // Книги
                         {
                             booksFilePath = openFileDialog.FileName;
                             LoadBooksFromCSV(booksFilePath);
 
-                            // ОБНОВИТЬ ПРИВЯЗКУ ДАННЫХ
+                            
                             booksDataTable = booksDataTableFull.Copy();
                             dataGridView1.DataSource = booksDataTable;
                         }
@@ -381,7 +400,7 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
                             readersFilePath = openFileDialog.FileName;
                             LoadReadersFromCSV(readersFilePath);
 
-                            // ОБНОВИТЬ ПРИВЯЗКУ ДАННЫХ
+                            
                             readersDataTable = readersDataTableFull.Copy();
                             dataGridView2.DataSource = readersDataTable;
                         }
@@ -420,11 +439,7 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
             formAbt.ShowDialog();
         }
 
-        private void ToolStripData_KVA_CLick(object sender, EventArgs e)
-        {
-            var formData = new FormData();
-            formData.ShowDialog();
-        }
+        //
 
         private void ToolStripMenuFunc_KVA_CLick(object sender, EventArgs e)
         {
@@ -446,7 +461,7 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
         {
             try
             {
-                if (tabControl1.SelectedTab == tabPage1) // Работаем с книгами
+                if (tabControl1.SelectedTab == tabPageBooks_KVA) // Работаем с книгами
                 {
                     if (comboBoxFiltr_KVA.SelectedItem == null || comboBoxFiltr_KVA.SelectedItem.ToString() == "Все")
                     {
@@ -465,38 +480,31 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
                     {
                         bool includeRow = false;
 
-                        // В зависимости от значения фильтра применяем разные условия
+                        // Варианты фильтров
                         switch (filterValue)
                         {
                             case "Новые издания":
-                                if (row["Новое издание"] is bool isNew && isNew)
+                                if (row["Новое издание"] is true)
                                     includeRow = true;
                                 break;
 
                             case "Старые издания":
-                                if (row["Новое издание"] is bool isOld && !isOld)
+                                if (row["Новое издание"] is false)
                                     includeRow = true;
                                 break;
 
                             case "Дорогие книги (от 700)":
-                                if (row["Цена"] is decimal price && price >= 700)
+                                if (Convert.ToDecimal(row["Цена"]) >= 700)
                                     includeRow = true;
                                 break;
 
                             case "Дешевые книги (до 500)":
-                                if (row["Цена"] is decimal priceLow && priceLow <= 500)
+                                if (Convert.ToDecimal(row["Цена"]) <= 500)
                                     includeRow = true;
                                 break;
 
                             case "Классика (до 1900 года)":
-                                if (row["Год издания"] is int year && year < 1900)
-                                    includeRow = true;
-                                break;
-
-                            default:
-                                // Если нужно фильтровать по конкретному автору или другому полю
-                                if (row["Автор"].ToString().Contains(filterValue) ||
-                                    row["Название"].ToString().Contains(filterValue))
+                                if (Convert.ToInt32(row["Год издания"]) < 1900)
                                     includeRow = true;
                                 break;
                         }
@@ -509,10 +517,9 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
 
                     dataGridView1.DataSource = filteredTable;
                 }
-                else if (tabControl1.SelectedTab == tabPage2) // Работаем с читателями
+                else if (tabControl1.SelectedTab == tabPageReaders_KVA) // читатели
                 {
-                    // Аналогичная логика для читателей
-                    // Можно добавить фильтры по датам, статусу и т.д.
+                    
                 }
             }
             catch (Exception ex)
@@ -522,14 +529,14 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
             }
         }
 
-        // Метод для поиска данных по введенному тексту в textBoxSearch_KVA
+        // Поиск данных
         private void SearchDataByTextBox()
         {
             try
             {
                 string searchText = textBoxSearch_KVA.Text.Trim();
 
-                if (tabControl1.SelectedTab == tabPage1) // Работаем с книгами
+                if (tabControl1.SelectedTab == tabPageBooks_KVA)
                 {
                     if (string.IsNullOrEmpty(searchText))
                     {
@@ -538,12 +545,12 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
                         return;
                     }
 
-                    // Создаем фильтр для поиска по всем текстовым полям
+                    // Создаем фильтр
                     DataTable searchTable = booksDataTableFull.Clone();
 
                     foreach (DataRow row in booksDataTableFull.Rows)
                     {
-                        // Проверяем все текстовые поля на соответствие поисковому запросу
+                        // Проверяем
                         bool found = row["Автор"].ToString().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
                                     row["Название"].ToString().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
                                     row["Описание"].ToString().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
@@ -565,9 +572,9 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                else if (tabControl1.SelectedTab == tabPage2) // Работаем с читателями
+                else if (tabControl1.SelectedTab == tabPageReaders_KVA)
                 {
-                    // Аналогичная логика для читателей
+
                     string searchText2 = textBox2.Text.Trim();
                     if (string.IsNullOrEmpty(searchText2))
                     {
@@ -599,7 +606,7 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        // без этого не работает
+        //---
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)

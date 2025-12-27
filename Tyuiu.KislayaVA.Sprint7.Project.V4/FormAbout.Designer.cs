@@ -28,32 +28,55 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAbout));
+            labelAbout_KVA = new Label();
+            pictureBoxCoolSkeleton_KVA = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxCoolSkeleton_KVA).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // labelAbout_KVA
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(36, 46);
-            label1.Name = "label1";
-            label1.Size = new Size(196, 160);
-            label1.TabIndex = 0;
-            label1.Text = "О программе\r\n\r\n\r\nКислая В. А. РППб25-1\r\n\r\nСпринт7 Проект Вариант 4\r\n\r\nТИУ 2025\r\n";
+            labelAbout_KVA.AutoSize = true;
+            labelAbout_KVA.BackColor = SystemColors.AppWorkspace;
+            labelAbout_KVA.Font = new Font("Consolas", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            labelAbout_KVA.ForeColor = SystemColors.ActiveCaptionText;
+            labelAbout_KVA.Location = new Point(36, 46);
+            labelAbout_KVA.Name = "labelAbout_KVA";
+            labelAbout_KVA.Size = new Size(324, 216);
+            labelAbout_KVA.TabIndex = 0;
+            labelAbout_KVA.Text = "О программе\r\n\r\n\r\nКислая В. А. РППб25-1\r\n\r\nСпринт7 Проект Вариант 4\r\n\r\nТИУ 2025\r\n";
+            // 
+            // pictureBoxCoolSkeleton_KVA
+            // 
+            pictureBoxCoolSkeleton_KVA.Image = (Image)resources.GetObject("pictureBoxCoolSkeleton_KVA.Image");
+            pictureBoxCoolSkeleton_KVA.Location = new Point(397, 69);
+            pictureBoxCoolSkeleton_KVA.Name = "pictureBoxCoolSkeleton_KVA";
+            pictureBoxCoolSkeleton_KVA.Size = new Size(268, 233);
+            pictureBoxCoolSkeleton_KVA.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxCoolSkeleton_KVA.TabIndex = 1;
+            pictureBoxCoolSkeleton_KVA.TabStop = false;
+            pictureBoxCoolSkeleton_KVA.Click += pictureBoxCoolSkeleton_KVA_Click;
             // 
             // FormAbout
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(486, 322);
-            Controls.Add(label1);
+            BackColor = SystemColors.AppWorkspace;
+            ClientSize = new Size(705, 391);
+            Controls.Add(pictureBoxCoolSkeleton_KVA);
+            Controls.Add(labelAbout_KVA);
+            MaximizeBox = false;
             Name = "FormAbout";
-            Text = "FormAbout";
+            Text = "О программе";
+            Load += FormAbout_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBoxCoolSkeleton_KVA).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
+        private Label labelAbout_KVA;
+        private PictureBox pictureBoxCoolSkeleton_KVA;
     }
 }

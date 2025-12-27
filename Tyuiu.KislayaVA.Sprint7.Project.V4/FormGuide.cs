@@ -16,5 +16,10 @@ namespace Tyuiu.KislayaVA.Sprint7.Project.V4
         {
             InitializeComponent();
         }
+
+        private void FormGuide_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
